@@ -12,17 +12,20 @@
         <h2 class="text-3xl font-bold mb-6 text-center">All Users</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <!-- User Card -->
+             <% users.forEach(function(user){ %>
+
+        
             <div class="bg-gray-800 p-5 rounded-xl shadow-lg flex flex-col items-center transition duration-300 hover:shadow-2xl hover:scale-105">
-                <img src="https://media.istockphoto.com/id/458017717/vector/king-lion-aslan.jpg?s=612x612&w=0&k=20&c=yKt4ae9kvAdf3JsMsZqb4vZ43sch49ky5rEQ_n8X7-Q=" alt="User" class="w-28 h-28 rounded-full border-4 border-blue-500 mb-4">
-                <h3 class="text-lg font-semibold">Harsh Vandana Sharma</h3>
-                <p class="text-gray-400 text-sm mb-3">harsh@male.com</p>
-                <img src="https://media.istockphoto.com/id/458017717/vector/king-lion-aslan.jpg?s=612x612&w=0&k=20&c=yKt4ae9kvAdf3JsMsZqb4vZ43sch49ky5rEQ_n8X7-Q=" alt="User Cover" class="w-full h-24 object-cover rounded-lg mb-3">
+                <img src="<%= user.image %>" alt="User" class="w-28 h-28 rounded-full border-4 border-blue-500 mb-4">
+                <h3 class="text-lg font-semibold"> <%= user.name %></h3>
+                <p class="text-gray-400 text-sm mb-3"><%= user.email %></p>
+                <img src="<%= user.image %>" alt="User Cover" class="w-full h-24 object-cover rounded-lg mb-3">
                 <div class="mt-2 flex space-x-3">
                     <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-sm">Edit User</button>
                     <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm">Delete User</button>
                 </div>
             </div>
-
+            <% }) %>
             <!-- More cards can be dynamically added -->
         </div>
     </div>

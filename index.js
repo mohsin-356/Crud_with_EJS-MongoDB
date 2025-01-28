@@ -11,14 +11,16 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
   res.render("index");
 });
-app.get("/read", (req, res) => {
-  res.render("read");
+app.get("/read", async (req, res) => {
+  let users =await userModel.find();
+  res.render("read", { users });
 });
 app.post("/create", async (req, res) => {
   const { name, email, image } = req.body;
   // Add data to MongoDB here
   const createdUser = await userModel.create({ name, email, image });
-  res.send(createdUser);
+  // return;
+  // res.send(createdUser);
 });
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
