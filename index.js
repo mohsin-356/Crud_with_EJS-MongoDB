@@ -19,6 +19,7 @@ app.post("/create", async (req, res) => {
   const { name, email, image } = req.body;
   // Add data to MongoDB here
   const createdUser = await userModel.create({ name, email, image });
+  
   // return;
   // res.send(createdUser);
 });
