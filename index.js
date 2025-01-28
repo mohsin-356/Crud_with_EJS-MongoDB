@@ -22,6 +22,7 @@ const storage = multer.diskStorage({
     });
   },
 });
+const upload = multer({ storage: storage });
 
 // Connect to MongoDB properly
 mongoose.connect("mongodb://localhost:27017/CRUD", { useNewUrlParser: true, useUnifiedTopology: true })
@@ -46,7 +47,7 @@ app.get("/read", async (req, res) => {
   }
 });
 
-app.post("/create", async (req, res) => {
+app.post("/create",upload.single('image'), async (req, res) => {
   try {
     const { name, email, image } = req.body;
     await userModel.create({ name, email, image });
