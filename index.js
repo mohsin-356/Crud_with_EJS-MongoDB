@@ -47,15 +47,19 @@ app.get("/read", async (req, res) => {
   }
 });
 
-app.post("/create",upload.single('image'), async (req, res) => {
+app.post("/create", upload.single("image"), async (req, res) => {
   try {
-    const { name, email, image } = req.body;
-    await userModel.create({ name, email, image });
-    res.redirect("/read"); // Redirecting after creating a user
+    const { name, email } = req.body;
+    const imagePath = "/images/upload/" + req.file.filename; // ✅ Image ka path set karo
+
+    await userModel.create({ name, email, image: imagePath }); // ✅ Database mein sahi path save karo
+    res.redirect("/read");
   } catch (error) {
     res.status(500).send("Error creating user");
+    console.log(error);
   }
 });
+
 app.get("/delete/:id", async (req, res) => {
   try
   {
