@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <title>Create User</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="w-full h-full bg-zinc-900">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo ut porro eaque iste eos distinctio, libero possimus. Quos, et hic, dolorem culpa illo deleniti quidem, suscipit consequatur qui blanditiis corrupti?</p>
+<body class="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+    <div class="w-full max-w-lg bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-4">Create User</h2>
+        <div class="flex space-x-2 mb-4">
+            <input type="text" placeholder="Name" class="flex-1 px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="email" placeholder="Email" class="flex-1 px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="text" placeholder="Image URL" class="flex-1 px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition">
+            Create User
+        </button>
     </div>
 </body>
 </html>
