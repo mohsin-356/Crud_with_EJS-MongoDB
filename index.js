@@ -49,31 +49,28 @@ app.get("/delete/:id", async (req, res) => {
     console.log(error);
   }
 });
-app.get("/edit/:id", async (req, res) => {
-  try
-  {
-    const user=await userModel.findOne({_id:req.params.id});
-    res.redirect("/edit",{user});
-  } 
-  catch (error)
-  {
-    res.status(500).send("Error deleting user");
-    console.log(error);
-  }
-});
 app.post("/edit/:id", async (req, res) => {
   try
   {
-    const { name, email, image } = req.body;
-    await userModel.findOneAndUpdate({_id:req.params.id},{name,email,image},{new:true});
-    res.redirect("/read");
+    const user=await userModel.findOneAndUpdate({_id:req.params.id},req.body,{new:true});
+    res.render("edit",{user});
   } 
   catch (error)
   {
-    res.status(500).send("Error deleting user");
+    res.status(500).send("Error redirecting to edit.ejs file user");
     console.log(error);
   }
 });
+app.get("/edit/:id", async (req, res) => {
+  try {
+    const user = await userModel.findOne({ _id: req.params.id });
+    res.render("edit", { user });
+  } catch (error) {
+    res.status(500).send("Error redirecting to edit.ejs file");
+    console.log(error);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
