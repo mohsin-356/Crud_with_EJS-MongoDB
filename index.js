@@ -12,6 +12,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index');
 });
+app.get('/read', (req, res) => {
+  res.render('read');
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
