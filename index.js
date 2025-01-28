@@ -37,15 +37,41 @@ app.post("/create", async (req, res) => {
     res.status(500).send("Error creating user");
   }
 });
-app.delete("/delete/:id", async (req, res) => {
+app.get("/delete/:id", async (req, res) => {
   try
   {
-    await userModel.findByIdAndDelete(req.params.id);
+    await userModel.findOneAndDelete({_id:req.params.id});
     res.redirect("/read");
   } 
   catch (error)
   {
     res.status(500).send("Error deleting user");
+    console.log(error);
+  }
+});
+app.get("/edit/:id", async (req, res) => {
+  try
+  {
+    const user=await userModel.findOne({_id:req.params.id});
+    res.redirect("/edit",{user});
+  } 
+  catch (error)
+  {
+    res.status(500).send("Error deleting user");
+    console.log(error);
+  }
+});
+app.post("/edit/:id", async (req, res) => {
+  try
+  {
+    const { name, email, image } = req.body;
+    await userModel.findOneAndUpdate({_id:req.params.id},{name,email,image},{new:true});
+    res.redirect("/read");
+  } 
+  catch (error)
+  {
+    res.status(500).send("Error deleting user");
+    console.log(error);
   }
 });
 

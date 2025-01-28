@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+    <div class="w-full max-w-lg bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="nav mb-10">
+            <a class="text-blue-500" href="/read">Go back</a>
+        </div>
+        <h2 class="text-xl font-semibold mb-4">Edit User</h2>
+        <form action="/edit/<%= user._id %>" method="post">
+            <div class="grid grid-cols-3 gap-2 mb-4">
+                <input type="text" placeholder="Name" value="<%= user.name %>" name="name" class="min-w-0 px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" placeholder="Email" value="<%= user.email %>" name="email" class="min-w-0 px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" placeholder="Image URL" value="user.image" name="image" class="min-w-0 px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="submit" value="Edit User" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
